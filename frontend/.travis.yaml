@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t francoismercadal/docker_tutorial -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true francoismercadal/docker_tutorial npm run test -- --coverage
